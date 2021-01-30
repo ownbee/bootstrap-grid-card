@@ -1,0 +1,38 @@
+{
+  "name": "bootstrap-grid-card",
+  "version": "0.0.1",
+  "description": "Bootstrap in lovelace UI.",
+  "private": true,
+  "keywords": [
+    "home-assistant",
+    "homeassistant",
+    "hass",
+    "automation",
+    "lovelace",
+    "bootstrap",
+    "layout",
+    "grid",
+    "custom-cards"
+  ],
+  "main": "src/bootstrap-grid-card.js",
+  "module": "src/bootstrap-grid-card.js",
+  "author": "Aleer",
+  "license": "MIT",
+  "dependencies": {
+    "card-tools": "github:thomasloven/lovelace-card-tools",
+    "bootstrap": "^4.6.0",
+    "lit-element": "^2.4.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "css-loader": "^4.0.2",
+    "lit-scss-loader": "^1.0.1",
+    "extract-loader": "^5.1.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch --mode=development",
+    "update-card-tools": "npm uninstall card-tools && npm install thomasloven/lovelace-card-tools"
+  }
+}
