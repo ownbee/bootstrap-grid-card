@@ -11,7 +11,11 @@ with different bootstrap classes in yaml.
 
 ## Install
 
-See development section.
+1. Add `https://github.com/idittansikte/bootstrap-grid-card` to *custom repositories* in HACS
+   (*HACS* -> *Frontend* -> (...) -> *Custom repositories*).
+2. Follow instructions in HACS.
+
+> Alternatively follow instructions further down under "Development".
 
 ## Usage
 
