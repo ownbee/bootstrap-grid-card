@@ -1,11 +1,13 @@
 bootstrap-grid-card
 ===================
 
-Do you love [Bootstrap](https://getbootstrap.com/) grid system and are looking for a way to get
-control over lovelace layout in both your browser and mobile app? Then this card is for you.
+Do you love [booststrap grid system](https://getbootstrap.com/docs/5.0/layout/grid/) or are just
+looking for a way to get control over lovelace layout on all your platforms? Then this card is for
+you.
 
 This card loads `bootstrap-grid.css` into lovelace and provides an easy way of configuring cards
-with different bootstrap classes in yaml.
+with different bootstrap classes in yaml. With bootstrap you can configure cards to take up
+different size depending on screen size:
 
 ![](lovelace.gif)
 
@@ -19,14 +21,15 @@ with different bootstrap classes in yaml.
 
 ## Usage
 
-First of all, if you don't know how to use [Booststrap grid](https://getbootstrap.com/docs/5.0/layout/grid/)
-system, I strongly suggest you to read about it before continuing. This guide will not cover that.
+First of all, if you don't know how to use [booststrap grid
+system](https://getbootstrap.com/docs/5.0/layout/grid/), I strongly suggest you to read about it
+before continuing. This guide will not repeat that concept.
 
-Example configuration:
+Simple example configuration:
 
 ```yaml
 title: My view
-panel: true
+panel: true  # !!!!!
 cards:
   - type: "custom:bootstrap-grid-card"
     cards:
@@ -48,31 +51,119 @@ cards:
 
 > Note: `panel: false` is not tested and probably not what you want.
 
-## Rows and columns
 
-The bootstrap-grid-card provides two custom card types: `row` and `col` to be used in the `cards` list
-of `bootstrap-grid-card`, `row` and `col` card.
+## Configuration variables
+
+**type** string *<span style="color:orange">REQUIRED</span>*
+
+`custom:bootstrap-grid-card`
+
+---
+
+**cards** list *<span style="color:orange">REQUIRED</span>*
+
+List of cards.
+
+---
+
+**class** string *(optional, default: `container-fluid`)*
+
+Class of the div that surrounds the grid.
+
+---
+
+**use_hass_style_gutter** bool *(optional, default: `True`)*
+
+Use paddings and margins on rows and columns that looks like Lovelace default style. If set to
+*False*, you'll get whatever bootstrap uses as default.
+
+---
+
+**hass_style_gutter_size** string *(optional, default: `4px`)*
+
+Custom space between cards. Only used if *use_hass_style_gutter* is enabled.
+
+---
+
+**container_padding** string *(optional)*
+
+Custom padding of the container. Will use bootstrap default if not provided.
+
+---
+
+**global_row_class** string *(optional)*
+
+String that will be appended to all [rows](#row-configuration-variables) class attribute.
+
+---
+
+**global_col_class** string *(optional)*
+
+String that will be appended to all [columns](#column-configuration-variables) class attribute.
+
+---
+
+## Custom cards: Rows and columns
+
+The bootstrap-grid-card provides two custom card types: `row` and `col` to be used in the `cards`
+list of `bootstrap-grid-card`, `row` and `col` card.
 
 The `type: row` and `type: col` card will wrap their `cards` list in a div with the `row` and `col`
 class respectively.
 
-A normal card (e.g. `type: button`) will always be a column and have the class `col*` added to it. So
-there is no need of adding a `type: col` around a single card.
+A normal card (e.g. `type: button`) will always be a column and have the class `col*` added to it.
+So there is no need of adding a `type: col` around a single card.
 
-## Bootstrap classes
 
-You can set bootstrap classes using the `class` config on following card types:
+### Row configuration variables
 
-* `custom:bootstrap-grid-card`: Div representing the bootstrap container. **Default:** `container-fluid`.
-* `row`: Div representing a row. **Default:** `row`.
-* `col`: Div representing a col. **Default:** `col`.
-* `<any-card-in-the-above-cards-list>`: Sets the class to the card´s HTML container. **Default:** `col`.
+**type** string *<span style="color:orange">REQUIRED</span>*
+
+`row`
+
+---
+
+**cards** list *<span style="color:orange">REQUIRED</span>*
+
+List of cards.
+
+---
+
+**class** string *(optional)*
+
+Class attribute of this column. Will always have the `row` class which can't be overridden.
+
+Example: `justify-content-center`
+
+---
+
+### Column configuration variables
+
+**type** string *<span style="color:orange">REQUIRED</span>*
+
+`col`
+
+---
+
+**cards** list *<span style="color:orange">REQUIRED</span>*
+
+List of cards.
+
+---
+
+**class** string *(optional, default: `col`)*
+
+Class attribute of this column.
+
+Example: `col-xs-12 col-sm-5 col-md-4 col-lg-3`
+
+---
 
 ## Nesting rows and columns
 
 It is possible to nest rows and columns any number of times as long there are no
-non-`bootstrap-grid-card`´s in between. For example, it will not work if you put a `row` card
-in a `horizontal-stack` card.
+non-`bootstrap-grid-card`´s in between. For example, it will not work if you put a `row` card in a
+`horizontal-stack` card.
 
 More advanced example:
 

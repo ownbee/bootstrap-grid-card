@@ -25,14 +25,17 @@ class BootstrapGridCard extends LitElement {
 
   render() {
     return html`
-    <div id="staging" class="${this._config.class || 'container-fluid'}">
+    <div id="staging" class="${this._config.class}">
     </div>
+    <style>
+      ${this._config.custom_style}
+    </style>
     `;
   }
 
   async updated(changedproperties) {
     if (!this.cards.length
-      && (this._config.cards && this._config.cards.length)
+      && (this._config.raw.cards && this._config.raw.cards.length)
     ) {
       // Build cards
       this.cards = await this.build_configured_cards();
@@ -54,7 +57,7 @@ class BootstrapGridCard extends LitElement {
     while (staging.lastChild)
       staging.removeChild(staging.lastChild);
 
-    return Promise.all(this.build_row(this._config.cards, staging));
+    return Promise.all(this.build_row(this._config.raw.cards, staging));
   }
 
   build_row(cards, parent) {
@@ -67,8 +70,9 @@ class BootstrapGridCard extends LitElement {
         }
 
         let defaultClass = card.type === 'row' ? 'row' : "col";
+        let globalClass = card.type === 'row' ? this._config.global_row_class : this._config.global_col_class;
         let newEl = document.createElement("div");
-        newEl.className = card.class || '';
+        newEl.className = `${card.class || ''}${globalClass}`;
         if (!newEl.className.includes(defaultClass)) {
           newEl.className = `${defaultClass} ${newEl.className}`;
         }
@@ -83,8 +87,8 @@ class BootstrapGridCard extends LitElement {
 
   async build_card(rowEl, card) {
     let colEl = document.createElement("div");
-    const config = { ...card, ...this._config.card_options };
-    colEl.className = config.class || "col";
+    const config = { ...card, ...this._config.raw.card_options };
+    colEl.className = `${config.class || "col"}${this._config.global_col_class}`;
     const el = createCard(config);
     el.hass = hass();
     colEl.appendChild(el)
