@@ -65,7 +65,7 @@ class BootstrapGridCard extends LitElement {
     cards.forEach(card => {
       if (card.type === 'row' || card.type === 'col') {
         if (!card.cards) {
-          console.log('A card of type "row" or "col" must have "cards" list!');
+          console.error('A card of type "row" or "col" must have "cards" list!');
           return; // Continue
         }
 
@@ -85,14 +85,14 @@ class BootstrapGridCard extends LitElement {
     return builtCards;
   }
 
-  async build_card(rowEl, card) {
+  async build_card(parent, card) {
     let colEl = document.createElement("div");
     const config = { ...card, ...this._config.raw.card_options };
     colEl.className = `${config.class || "col"}${this._config.global_col_class}`;
     const el = createCard(config);
     el.hass = hass();
     colEl.appendChild(el)
-    rowEl.appendChild(colEl);
+    parent.appendChild(colEl);
     return new Promise((resolve, reject) =>
       el.updateComplete
         ? el.updateComplete.then(() => resolve(el))
