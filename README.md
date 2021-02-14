@@ -1,4 +1,4 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 [![Stable](https://img.shields.io/github/release/idittansikte/bootstrap-grid-card.svg)](https://github.com/idittansikte/bootstrap-grid-card/releases/latest)
 [![Community Forum](https://img.shields.io/badge/community-forum-brightgreen.svg)](https://community.home-assistant.io/t/lovelace-bootstrap-grid-card/274738)
 
@@ -15,18 +15,28 @@ different size depending on screen size:
 
 ![](lovelace.gif)
 
-## Install
+## Installation
 
-1. Add `https://github.com/idittansikte/bootstrap-grid-card` to *custom repositories* in HACS
-   (*HACS* -> *Frontend* -> (...) -> *Custom repositories*).
+### HACS (recommended)
+
+This card is available in [HACS](https://hacs.xyz/) (Home Assistant Community Store).
+<small>_HACS is a third party community store and is not included in Home Assistant out of the box._</small>
+
+This card should pop up if you search for "*bootstrap-grid-card*" in HACS.
+
+### Manual install
+
+1. Download and copy `bootstrap-grid-card.js` from [latest
+   release](https://github.com/idittansikte/bootstrap-grid-card/releases/latest) into your
+   `config/www` directory.
+
 2. Add card to resources:
 
     ```yaml
     resources:
       - type: module
-        url: /hacsfiles/bootstrap-grid-card/bootstrap-grid-card.js
+        url: /local/bootstrap-grid-card.js
     ```
-3. Follow instructions in HACS.
 
 > Alternatively follow instructions further down under "Development".
 
