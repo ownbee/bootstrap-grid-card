@@ -1,4 +1,6 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
+[![Stable](https://img.shields.io/github/release/idittansikte/bootstrap-grid-card.svg)](https://github.com/idittansikte/bootstrap-grid-card/releases/latest)
+[![Community Forum](https://img.shields.io/badge/community-forum-brightgreen.svg)](https://community.home-assistant.io/t/lovelace-bootstrap-grid-card/274738)
 
 bootstrap-grid-card
 ===================
