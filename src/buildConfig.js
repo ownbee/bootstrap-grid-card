@@ -22,13 +22,14 @@ export default (config) => {
     }
     `;
   }
-  if (config.container_padding) {
-    style += `
-    #staging {
-      padding: ${config.container_padding} !important;
-    }
-    `
+
+  style += `
+  #staging {
+    ${config.container_padding ? `padding: ${config.container_padding} !important;` : ""}
+    box-sizing: border-box;
   }
+  `
+
   const conf = {
     custom_style: style,
     global_row_class: config.global_row_class ? ` ${config.global_row_class}`  : "",
