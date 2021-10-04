@@ -5,12 +5,18 @@
 bootstrap-grid-card
 ===================
 
-Do you love [booststrap grid system](https://getbootstrap.com/docs/5.0/layout/grid/) or are just
-looking for a way to get control over lovelace layout on all your platforms? Then this card is for
-you.
+Are you looking for a way to get control over your lovelace layout on all your platforms with a
+small configuration footprint? Or maybe just a fan of [booststrap grid
+system](https://getbootstrap.com/docs/5.1/layout/grid/)? Then this card is for you.
+
+I wanted a very specific layout on my wall-mounted tablet to fit everything I needed without having
+to scroll too much. When I had made that, the same layout became unusable on my phone and very
+unoptimal on my big PC screen. I did not want to maintain multiple views that basically provided the
+same things but with a different layouts and I could not find any existing solution that was simple
+and enough customizable.
 
 This card loads `bootstrap-grid.css` into lovelace and provides an easy way of configuring cards
-with different bootstrap classes in yaml. With bootstrap you can configure cards to take up
+with different bootstrap grid classes in yaml. With bootstrap you can configure cards to take up
 different size depending on screen size:
 
 ![](lovelace.gif)
@@ -43,8 +49,8 @@ This card should pop up if you search for "*bootstrap-grid-card*" in HACS.
 ## Usage
 
 First of all, if you don't know how to use [booststrap grid
-system](https://getbootstrap.com/docs/5.0/layout/grid/), I strongly suggest you to read about it
-before continuing. This guide will not repeat that concept.
+system](https://getbootstrap.com/docs/5.1/layout/grid/), I strongly suggest you to read about it
+before continuing. This guide will assume the reader has basic knowledge of bootstrap grids.
 
 Simple example configuration:
 
@@ -78,38 +84,45 @@ cards:
 ```yaml
 # [Required, type: string]
 type: custom:bootstrap-grid-card
-# [Required, type: list]
-#
+
 # List of cards.
+#
+# [required, type: list]
 cards:
-# [Optional, type: string, default: 'container-fluid']
-#
+
 # Class of the div that surrounds the grid.
-class: "container-fluid"
-# [Optional, type: bool, default: True]
 #
+# [optional, type: string, default: 'container-fluid']
+class: "container-fluid"
+
 # Use paddings and margins on rows and columns that looks like Lovelace default
 # style. If set to *False*, you'll get whatever bootstrap uses as default.
+#
+# [optional, type: bool, default: True]
 use_hass_style_gutter: True
-# [Optional, type: string, default: "4px"]
-#
+
 # Custom space between cards. Only used if 'use_hass_style_gutter' is enabled.
+#
+# [optional, type: string, default: "4px"]
 hass_style_gutter_size: "4px"
-# [Optional, type: string, default: Whatever bootstrap sets]
+
+# Custom padding of the container (panel).
 #
-# Custom padding of the container.
+# [optional, type: string, default: Whatever bootstrap sets]
 container_padding:
-# [Optional, type: string, default: ""]
-#
+
 # String that will be appended to all rows class attribute.
-global_row_class: ""
-# [Optional, type: string, default: ""]
 #
+# [optional, type: string, default: ""]
+global_row_class: ""
+
 # String that will be appended to all columns class attribute.
+#
+# [optional, type: string, default: ""]
 global_col_class: ""
 ```
 
-## Custom cards: Rows and columns
+## Rows and columns
 
 The bootstrap-grid-card provides two custom card types: `row` and `col` to be used in the `cards`
 list of `bootstrap-grid-card`, `row` and `col` card.
@@ -124,33 +137,39 @@ A normal card (e.g. `type: button`) in the `cards` list of `row` or `col`, will 
 ### Row options
 
 ```yaml
-# [Required, type: string]
+# [required, type: string]
 type: row
-# [Optional, type: string]
-#
+
 # Class attribute of this column. Will always have the 'row' class which can't
 # be overridden.
-# Example: "justify-content-center"
-class:
-# [Required, type: list]
 #
+# Example: "justify-content-center"
+#
+# [optional, type: string]
+class:
+
 # List of cards.
+#
+# [required, type: list]
 cards:
 ```
 
 ### Column options
 
 ```yaml
-# [Required, type: string]
+# [required, type: string]
 type: col
-# [Optional, type: string]
-#
+
 # Class attribute of this column.
-# Example: "col-xs-12 col-sm-5 col-md-4 col-lg-3"
-class:
-# [Required, type: list]
 #
+# Example: "col-xs-12 col-sm-5 col-md-4 col-lg-3"
+#
+# [optional, type: string]
+class:
+
 # List of cards.
+#
+# [required, type: list]
 cards:
 ```
 
@@ -170,13 +189,9 @@ More advanced example:
       - type: button
         class: "col-xs-12 col-sm-12 col-md-6 col-lg-5"
         # ...
-      - type: vertical-stack
+      - type: button
         class: "col-xs-12 col-sm-12 col-md-3 col-lg-3"
-        cards:
-          - type: sensor
-            # ...
-          - type: sensor
-            # ...
+        # ...
       - type: col # Nesting start
         class: "col-xs-12 col-sm-12 col-md-3 col-lg-3"
         cards:
