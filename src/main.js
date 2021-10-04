@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from 'lit';
 import buildConfig from './buildConfig';
 import style from './style';
 import { createCard } from "card-tools/src/lovelace-element";
