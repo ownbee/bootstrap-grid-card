@@ -187,13 +187,13 @@ More advanced example:
     class: justify-content-md-center
     cards:
       - type: button
-        class: "col-xs-12 col-sm-12 col-md-6 col-lg-5"
+        class: "col-12 col-sm-12 col-md-6 col-lg-5"
         # ...
       - type: button
-        class: "col-xs-12 col-sm-12 col-md-3 col-lg-3"
+        class: "col-12 col-sm-12 col-md-3 col-lg-3"
         # ...
       - type: col # Nesting start
-        class: "col-xs-12 col-sm-12 col-md-3 col-lg-3"
+        class: "col-12 col-sm-12 col-md-3 col-lg-3"
         cards:
           - type: row
             cards:
