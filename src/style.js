@@ -11,4 +11,3 @@ const style = [bootstrapGridStyle, css`
     `];
 
 export default style;
-
