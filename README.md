@@ -6,17 +6,17 @@ bootstrap-grid-card
 ===================
 
 Are you looking for a way to get control over your lovelace layout on all your platforms with a
-small configuration footprint? Or maybe just a fan of [booststrap grid
+small configuration footprint? Or maybe just a fan of [bootstrap grid
 system](https://getbootstrap.com/docs/5.1/layout/grid/)? Then this card is for you.
 
 I wanted a very specific layout on my wall-mounted tablet to fit everything I needed without having
 to scroll too much. When I had made that, the same layout became unusable on my phone and very
-unoptimal on my big PC screen. I did not want to maintain multiple views that basically provided the
-same things but with a different layouts and I could not find any existing solution that was simple
+non-optimal on my big PC screen. I did not want to maintain multiple views that basically provided the
+same things but with different layouts and I could not find any existing solution that was simple
 and enough customizable.
 
 This card loads `bootstrap-grid.css` into lovelace and provides an easy way of configuring cards
-with different bootstrap grid classes in yaml. With bootstrap you can configure cards to take up
+with different bootstrap grid classes in yaml. With bootstrap, you can configure cards to take up
 different size depending on screen size:
 
 ![](lovelace.gif)
@@ -25,30 +25,34 @@ different size depending on screen size:
 
 ### HACS (recommended)
 
-This card is available in [HACS](https://hacs.xyz/) (Home Assistant Community Store).
-<small>_HACS is a third party community store and is not included in Home Assistant out of the box._</small>
+This card is available in [HACS](https://hacs.xyz/) (Home Assistant Community Store). <small>_HACS
+is a third party community store and is not included in Home Assistant out of the box._</small>
 
-This card should pop up if you search for "*bootstrap-grid-card*" in HACS.
+This card should pop up if you search for "*bootstrap-grid-card*" in HACS. Remember adding the card
+to resources (described by HACS instructions while installing).
 
 ### Manual install
 
 1. Download and copy `bootstrap-grid-card.js` from [latest
-   release](https://github.com/idittansikte/bootstrap-grid-card/releases/latest) into your
-   `config/www` directory.
+   release](https://github.com/idittansikte/bootstrap-grid-card/releases/latest) into
+   `<home-assistant>/www` directory. _Alternatively follow build instructions further down under
+   "Development"._
 
-2. Add card to resources:
+2. Add card to resources in `<home-assistant>/configuration.yaml`:
 
     ```yaml
-    resources:
-      - type: module
-        url: /local/bootstrap-grid-card.js
-    ```
+    lovelace:
+      ...
+      resources:
+        ...
+        - url: /local/bootstrap-grid-card.js
+          type: module
 
-> Alternatively follow instructions further down under "Development".
+    ```
 
 ## Usage
 
-First of all, if you don't know how to use [booststrap grid
+If you don't know how to use [bootstrap grid
 system](https://getbootstrap.com/docs/5.1/layout/grid/), I strongly suggest you to read about it
 before continuing. This guide will assume the reader has basic knowledge of bootstrap grids.
 
@@ -69,7 +73,7 @@ cards:
               class: "col-9"
               <...>
        - type: row
-         class: "justify-content-md-center"
+         class: "justify-content-center"
          cards:
             - type: entity
               class: "col-6"
@@ -218,5 +222,9 @@ npm run build
 # Copy to home assistance www folder
 cp dist/bootstrap-grid-card.js <home_assistant>/config/www/bootstrap-grid-card.js
 
+# Add the .js file in resources described in the manual install instructions above.
+
 # In lovelace UI: clear cache, reload resources and reload page
 ```
+
+> Alternatively follow instructions further down under "Development".
