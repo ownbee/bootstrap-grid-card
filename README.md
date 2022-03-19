@@ -67,21 +67,43 @@ cards:
        - type: row
          cards:
             - type: button
-              class: "col-3"
-              <...>
+              class: "col-xs-12 col-md-6 col-xxl-3"
+              name: Button 1
             - type: button
-              class: "col-9"
-              <...>
+              class: "col-xs-12 col-md-6 col-xxl-3"
+              name: Button 2
+            - type: button
+              class: "col-xs-12 col-md-6 col-xxl-3"
+              name: Button 3
+            - type: button
+              class: "col-xs-12 col-md-6 col-xxl-3"
+              name: Button 4
        - type: row
          class: "justify-content-center"
          cards:
             - type: entity
-              class: "col-6"
-              <...>
+              class: "col-xs-12 col-md-3 col-xxl-4"
+              entity: sun.sun
+            - type: weather-forecast
+              class: "col-xs-12 col-md-8 col-xxl-10"
+              entity: weather.home
 ```
 
 > Note: `panel: false` is not tested and probably not what you want.
 
+The default bootstrap breakpoints are used. It is not possible to change these without recompiling
+the bootstrap sass files which is not supported in this card.
+
+```css
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+)
+```
 
 ## Options
 
