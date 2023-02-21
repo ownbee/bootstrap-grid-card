@@ -39,13 +39,12 @@ to resources (described by HACS instructions while installing).
    "Development"._
 
 2. Add card to resources in `<home-assistant>/configuration.yaml`:
-
     ```yaml
     lovelace:
       ...
       resources:
         ...
-        - url: /local/bootstrap-grid-card.js
+        - url: /hacsfiles/bootstrap-grid-card/bootstrap-grid-card.js
           type: module
 
     ```
