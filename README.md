@@ -31,6 +31,17 @@ is a third party community store and is not included in Home Assistant out of th
 This card should pop up if you search for "*bootstrap-grid-card*" in HACS. Remember adding the card
 to resources (described by HACS instructions while installing).
 
+> **Note:** If you used this method but are loading the dashboard using YAML 
+> then you will need to load the module manually at `<home-assistant>/configuration.yaml` as follows:
+> ```yaml
+>   lovelace:
+>     ...
+>     resources:
+>       ...
+>       - url: /hacsfiles/bootstrap-grid-card/bootstrap-grid-card.js
+>         type: module
+>  ```
+
 ### Manual install
 
 1. Download and copy `bootstrap-grid-card.js` from [latest
@@ -40,15 +51,13 @@ to resources (described by HACS instructions while installing).
 
 2. Add card to resources in `<home-assistant>/configuration.yaml`:
     ```yaml
-    lovelace:
-      ...
-      resources:
-        ...
-        - url: /hacsfiles/bootstrap-grid-card/bootstrap-grid-card.js
-          type: module
-
+   lovelace:
+   ...
+   resources:
+   ...
+   - url: /local/bootstrap-grid-card.js
+     type: module
     ```
-
 ## Usage
 
 If you don't know how to use [bootstrap grid
