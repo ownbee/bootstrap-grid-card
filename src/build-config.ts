@@ -1,10 +1,12 @@
-export default (config) => {
+import { BootstrapGridCardConfig, BuiltCardConfig } from "./types";
+
+export default (config: BootstrapGridCardConfig): BuiltCardConfig => {
   if (!config.cards || !config.cards.length)
     throw new Error('No cards configured!');
 
-  let use_hass_style_gutter = "use_hass_style_gutter" in config ? config.use_hass_style_gutter : true;
-  let hass_style_gutter_size = "hass_style_gutter_size" in config ? config.hass_style_gutter_size : "4px";
-  hass_style_gutter_size = hass_style_gutter_size.replace(';','');
+  let use_hass_style_gutter = config.use_hass_style_gutter ? config.use_hass_style_gutter : true;
+  let hass_style_gutter_size = config.hass_style_gutter_size ? config.hass_style_gutter_size : "4px";
+  hass_style_gutter_size = hass_style_gutter_size.replace(';', '');
   let style = ""
   if (use_hass_style_gutter) {
     style += `
@@ -30,12 +32,13 @@ export default (config) => {
   }
   `
 
-  const conf = {
+
+  const conf: BuiltCardConfig = {
     custom_style: style,
-    global_row_class: config.global_row_class ? ` ${config.global_row_class}`  : "",
-    global_col_class: config.global_col_class ? ` ${config.global_col_class}`  : "",
+    global_row_class: config.global_row_class ? ` ${config.global_row_class}` : "",
+    global_col_class: config.global_col_class ? ` ${config.global_col_class}` : "",
     class: config.class || 'container-fluid',
-    raw: {...JSON.parse(JSON.stringify(config))},
+    raw: { ...JSON.parse(JSON.stringify(config)) },
   };
 
   return conf;

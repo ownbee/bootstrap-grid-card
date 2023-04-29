@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/main.ts',
   mode: 'production',
   output: {
     filename: 'dist/bootstrap-grid-card.js',
@@ -18,6 +18,14 @@ module.exports = {
           },
         }, 'extract-loader', 'css-loader'],
       },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
     ]
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
   }
 };
