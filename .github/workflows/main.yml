@@ -1,17 +1,22 @@
-name: Validate
+name: Main
 
 on:
   push:
   pull_request:
-  schedule:
-    - cron: "0 0 * * *"
 
 jobs:
   validate:
     runs-on: "ubuntu-latest"
+    name: Validate
     steps:
-      - uses: "actions/checkout@v2"
-      - name: HACS validation
-        uses: "hacs/action@main"
+      - name: ⬇️ Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: ⬢ Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          category: "plugin"
+          node-version: '*'
+          cache: npm
+
+      - name: 📦 Install Packages
+        run: npm ci
