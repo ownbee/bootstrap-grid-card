@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-grid-card",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Bootstrap grid in lovelace UI.",
   "private": true,
   "keywords": [
