@@ -24,7 +24,7 @@
     "lit": "3.1.2"
   },
   "devDependencies": {
-    "css-loader": "^6.10.0",
+    "css-loader": "^7.1.1",
     "extract-loader": "^5.1.0",
     "lit-scss-loader": "^2.0.1",
     "ts-loader": "^9.5.1",
